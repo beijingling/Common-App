@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">commonlib</string>
+    <string name="net_error">网络访问错误，请稍后再试</string>
+    <string name="update_error">图片上传错误，请重试</string>
+    <string name="no_net">网络不可用,请检查你的网络</string>
+    <string name="server_excception">服务器异常</string>
+    <string name="empty">数据为空</string>
+    <string name="click_retry">点击重试</string>
+    <string name="please_later">加载中&#3280;</string>
+</resources>
