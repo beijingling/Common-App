@@ -79,3 +79,4 @@ fastlane/readme.md
 .idea/
 app/release/
 app/debug/
+gradle/
