@@ -6,12 +6,9 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.app.common.R;
+import com.littleox.common.commonlib.R;
 
 
 /**
@@ -36,20 +33,20 @@ final class ToastyUtils
     private ToastyUtils() {
     }
 
-    static Drawable tint9PatchDrawableFrame(@NonNull Context context, @ColorInt int tintColor) {
+    static Drawable tint9PatchDrawableFrame(Context context,int tintColor) {
         final NinePatchDrawable toastDrawable = (NinePatchDrawable) getDrawable(context, R.mipmap.toast_frame);
         toastDrawable.setColorFilter(new PorterDuffColorFilter(tintColor, PorterDuff.Mode.SRC_IN));
         return toastDrawable;
     }
 
-    static void setBackground(@NonNull View view, Drawable drawable) {
+    static void setBackground(View view, Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             view.setBackground(drawable);
         else
             view.setBackgroundDrawable(drawable);
     }
 
-    static Drawable getDrawable(@NonNull Context context, @DrawableRes int id) {
+    static Drawable getDrawable(Context context, int id) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             return context.getDrawable(id);
         else
