@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
         mRxManager.addSubscribe(WebApi.getInstance().getService().getUserInfo("octokit").compose(RxUtil.rxSchedulerHelper()).subscribeWith(new RxSubscriber<GithubUser>(this) {
             @Override
             protected void _onNext(GithubUser githubUser) {
-                if(TextUtils.isEmpty(githubUser.getMessage())){
+                if(!TextUtils.isEmpty(githubUser.getMessage())){
                     user_name.setText(githubUser.getMessage());
                     return;
                 }

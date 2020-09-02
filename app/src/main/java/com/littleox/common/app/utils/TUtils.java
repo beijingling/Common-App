@@ -11,9 +11,14 @@ import java.lang.reflect.Type;
 public class TUtils {
     public static <T> T getT(Object obj, int index) {
         try {
-            ParameterizedType type = (ParameterizedType) obj.getClass().getGenericSuperclass();
-            Type actualTypeArgument = type.getActualTypeArguments()[index];
-            return ((Class<T>) actualTypeArgument).newInstance();
+            Type type = obj.getClass().getGenericSuperclass();
+            if (type instanceof ParameterizedType) {
+                ParameterizedType parameterizedType = (ParameterizedType) type;
+                Type actualTypeArgument = parameterizedType.getActualTypeArguments()[index];
+                if (actualTypeArgument != null) {
+                    return ((Class<T>) actualTypeArgument).newInstance();
+                }
+            }
         } catch (IllegalAccessException e) {
             LogUtils.loge("TUtils", e);
         } catch (InstantiationException e) {
