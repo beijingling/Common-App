@@ -4,6 +4,11 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.littleox.common.app.bean.GithubUser;
+import com.littleox.common.app.network.WebApi;
+import com.littleox.common.commonlib.baserx.RxManager;
+import com.littleox.common.commonlib.baserx.RxSubscriber;
+import com.littleox.common.commonlib.baserx.RxUtil;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        RxManager rxManager = new RxManager();
+        rxManager.addSubscribe(WebApi.getInstance().getService().getUserInfo("octokit").compose(RxUtil.rxSchedulerHelper())
+                .subscribeWith(new RxSubscriber<GithubUser>(this) {
+                    @Override
+                    protected void _onNext(GithubUser githubUser) {
+                        
+                    }
+
+                    @Override
+                    protected void _onError(String message) {
+
+                    }
+                }));
     }
 
     @Override

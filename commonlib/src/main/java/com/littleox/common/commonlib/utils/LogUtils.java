@@ -19,8 +19,8 @@ public class LogUtils
     public static void logInit(boolean debug)
     {
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder().showThreadInfo(false)  // 是否显示线程信息，默认为ture
-//                .logStrategy(customLog) // 更改要打印的日志策略。
-                .tag("miniworld")   // 每个日志的全局标记。默认PRETTY_LOGGER
+                .methodCount(0)
+                .tag("commonApp")   // 每个日志的全局标记。默认PRETTY_LOGGER
                 .build();
         Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
         DEBUG_ENABLE = debug;
