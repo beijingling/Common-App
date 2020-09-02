@@ -4,6 +4,8 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.littleox.common.app.base.BaseActivity;
 import com.littleox.common.app.bean.GithubUser;
 import com.littleox.common.app.network.WebApi;
@@ -35,7 +37,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initView() {
 
-        mRxManager.addSubscribe(WebApi.getInstance().getService().getUserInfo("octokit").compose(RxUtil.rxSchedulerHelper()).subscribeWith(new RxSubscriber<GithubUser>(this) {
+        mRxManager.addSubscribe(WebApi.getInstance().getService().getUserInfo("beijingling").compose(RxUtil.rxSchedulerHelper()).subscribeWith(new RxSubscriber<GithubUser>(this) {
             @Override
             protected void _onNext(GithubUser githubUser) {
                 if(!TextUtils.isEmpty(githubUser.getMessage())){
@@ -43,6 +45,8 @@ public class MainActivity extends BaseActivity {
                     return;
                 }
                 user_name.setText(githubUser.getLogin());
+                Glide.with(mContext).asBitmap().load(githubUser.getAvatar_url()).diskCacheStrategy(DiskCacheStrategy.ALL).into(user_avatar);
+                toolbar.setTitle(githubUser.getName());
             }
 
             @Override
