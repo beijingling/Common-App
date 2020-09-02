@@ -45,4 +45,10 @@ dependencies {
     api "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
 
     api "com.squareup.okhttp3:logging-interceptor:3.10.0"
+    //自动屏幕尺寸适配
+    implementation 'me.jessyan:autosize:1.2.1'
+    //自动绑定view butterKnife
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    
 }
