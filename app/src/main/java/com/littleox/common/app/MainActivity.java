@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initView() {
 
-        mRxManager.addSubscribe(WebApi.getInstance().getService().getUserInfo("beijingling").compose(RxUtil.rxSchedulerHelper())
+        mRxManager.addSubscribe(WebApi.getInstance().getService().getUserInfo("torvalds").compose(RxUtil.rxSchedulerHelper())
                 .subscribeWith(new RxSubscriber<GithubUser>(this) {
             @Override
             protected void _onNext(GithubUser githubUser) {
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void getRepos(){
-        mRxManager.addSubscribe(WebApi.getInstance().getService().getUserRepos("beijingling").compose(RxUtil.rxSchedulerHelper())
+        mRxManager.addSubscribe(WebApi.getInstance().getService().getUserRepos("torvalds").compose(RxUtil.rxSchedulerHelper())
                 .subscribeWith(new RxSubscriber<List<RepoInfo>>(mContext) {
                     @Override
                     protected void _onNext(List<RepoInfo> repoInfos) {
