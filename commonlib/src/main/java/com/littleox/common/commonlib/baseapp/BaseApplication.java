@@ -34,11 +34,6 @@ public class BaseApplication extends Application
         return baseApplication;
     }
 
-    @Override
-    public void onTerminate()
-    {
-        super.onTerminate();
-    }
 
     /**
      * @param base
